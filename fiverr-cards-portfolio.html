@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stefany.S Portfolio — Automation & CRM Projects</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600;1,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy-950: #070d16;
+            --navy-900: #0a1622;
+            --navy-800: #101f30;
+            --navy-700: #16283c;
+            --orange: #E8883A;
+            --orange-light: #F2B89A;
+            --teal: #5FD4DE;
+            --teal-dim: #3E7C87;
+            --ink-100: #F5F3EE;
+            --ink-300: #C9CDD3;
+            --ink-500: #8A8C90;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            width: 100%;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            background: var(--navy-950);
+            color: var(--ink-100);
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        h1, h2, .brand-font {
+            font-family: 'Playfair Display', Georgia, 'Times New Roman', serif;
+        }
+
+        em {
+            font-style: italic;
+        }
+
+        /* ---------- PINNED SCROLL HERO ---------- */
+
+        .scroll-hero {
+            position: relative;
+            height: 100vh;
+        }
+
+        @media (min-width: 861px) {
+            html, body {
+                height: 100%;
+                overflow: hidden;
+            }
+        }
+
+        .hero-stage {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-bg,
+        .hero-bg-sharp {
+            position: absolute;
+            inset: -40px;
+            background-image: url('central%20de%20controle%20.png');
+            background-size: cover;
+            background-position: center 60%;
+        }
+
+        .hero-bg {
+            filter: blur(9px) saturate(85%) brightness(0.55);
+            transform: scale(1.15) translateX(0);
+            z-index: 0;
+        }
+
+        .hero-bg-sharp {
+            filter: blur(1px) saturate(100%) brightness(0.68);
+            transform: scale(1.12) translateX(0);
+            z-index: 1;
+            opacity: 0;
+            -webkit-mask-image: linear-gradient(100deg, black 0%, black 48%, transparent 74%);
+            mask-image: linear-gradient(100deg, black 0%, black 48%, transparent 74%);
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+            background:
+                radial-gradient(ellipse 60% 55% at 78% 45%, rgba(95, 212, 222, 0.10), transparent 60%),
+                rgba(7, 13, 22, 0.48),
+                linear-gradient(to top, var(--navy-950) 0%, rgba(7, 13, 22, 0) 22%);
+        }
+
+        .hero-overlay-left {
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            background: linear-gradient(100deg, rgba(7, 13, 22, 0.72) 0%, rgba(7, 13, 22, 0.48) 34%, transparent 66%);
+        }
+
+        .hero-overlay-right {
+            position: absolute;
+            inset: 0;
+            z-index: 4;
+            opacity: 0;
+            background: linear-gradient(100deg, transparent 0%, transparent 48%, rgba(7, 13, 22, 0.68) 72%, rgba(7, 13, 22, 0.95) 100%);
+        }
+
+        .hero-fade-bottom {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            height: 22vh;
+            min-height: 160px;
+            z-index: 5;
+            pointer-events: none;
+            background: linear-gradient(to top, var(--navy-950) 0%, rgba(7, 13, 22, 0.82) 40%, rgba(7, 13, 22, 0) 100%);
+        }
+
+        /* ---------- PHASE 1: INTRO (text + Stefany) ---------- */
+
+        .hero-intro {
+            position: absolute;
+            inset: 0;
+            z-index: 6;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-content {
+            position: relative;
+            width: 100%;
+        }
+
+        .hero-text {
+            max-width: 560px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.78rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--teal);
+            margin-bottom: 22px;
+            font-weight: 600;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 600;
+            line-height: 1.12;
+            color: var(--ink-100);
+            margin-bottom: 22px;
+        }
+
+        .hero-text h1 em {
+            color: var(--orange);
+            font-weight: 600;
+        }
+
+        .hero-sub {
+            font-size: 1.08rem;
+            line-height: 1.7;
+            color: var(--ink-300);
+            margin-bottom: 34px;
+            max-width: 480px;
+        }
+
+        .hero-cta {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 44px;
+        }
+
+        .hero-badges {
+            display: flex;
+            gap: 28px;
+            flex-wrap: wrap;
+        }
+
+        .hero-badge {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .hero-badge strong {
+            font-size: 0.95rem;
+            color: var(--ink-100);
+            font-weight: 600;
+        }
+
+        .hero-badge span {
+            font-size: 0.78rem;
+            color: var(--ink-500);
+        }
+
+        .hero-image {
+            position: absolute;
+            bottom: 0;
+            right: clamp(40px, 10vw, 180px);
+            z-index: 2;
+            width: clamp(320px, 34vw, 620px);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            pointer-events: none;
+        }
+
+        .hero-image::before {
+            content: '';
+            position: absolute;
+            width: 90%;
+            aspect-ratio: 1 / 1;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(95, 212, 222, 0.22) 0%, rgba(95, 212, 222, 0.05) 55%, transparent 75%);
+            bottom: -10%;
+            filter: blur(4px);
+        }
+
+        .hero-image img {
+            position: relative;
+            width: 100%;
+            display: block;
+            filter: drop-shadow(0 20px 24px rgba(0,0,0,0.35));
+            -webkit-mask-image: linear-gradient(to bottom, black 0%, black 82%, transparent 97%);
+            mask-image: linear-gradient(to bottom, black 0%, black 82%, transparent 97%);
+        }
+
+        .hero-image-mobile {
+            display: none;
+        }
+
+        .scroll-cue {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 22px;
+            z-index: 5;
+            text-align: center;
+            color: var(--ink-500);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .scroll-cue span {
+            display: block;
+            margin-top: 8px;
+            font-size: 1rem;
+            animation: bob 2.2s ease-in-out infinite;
+        }
+
+        @keyframes bob {
+            0%, 100% { transform: translateY(0); opacity: 0.6; }
+            50% { transform: translateY(6px); opacity: 1; }
+        }
+
+        /* ---------- PHASE 2: WORK CARDS ---------- */
+
+        .cards-stage {
+            position: absolute;
+            inset: 0;
+            z-index: 7;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            opacity: 0;
+            pointer-events: none;
+            padding-right: clamp(24px, 6vw, 100px);
+            padding-bottom: clamp(48px, 8vh, 90px);
+        }
+
+        .cards-stage-inner {
+            max-width: 940px;
+        }
+
+        .cards-stage .eyebrow {
+            margin-bottom: 16px;
+        }
+
+        .cards-stage h2 {
+            font-size: 1.9rem;
+            font-weight: 600;
+            margin-bottom: 28px;
+            font-style: italic;
+        }
+
+        .cards-stage h2 em {
+            color: var(--orange);
+        }
+
+        .cards-row {
+            display: flex;
+            gap: 18px;
+            width: min(880px, 84vw);
+            height: 400px;
+            transition: height 0.5s cubic-bezier(0.4, 0, 0.2, 1), width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cards-row:has(.hcard:hover) {
+            height: min(560px, 64vh);
+            width: min(980px, 92vw);
+        }
+
+        .hcard {
+            position: relative;
+            flex: 1;
+            min-width: 160px;
+            border-radius: 24px;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+            background: rgba(255, 255, 255, 0.055);
+            backdrop-filter: blur(22px) saturate(160%);
+            -webkit-backdrop-filter: blur(22px) saturate(160%);
+            box-shadow:
+                inset 0 1px 0 rgba(255, 255, 255, 0.16),
+                inset 0 0 40px rgba(255, 255, 255, 0.03);
+            padding: 26px 24px;
+            display: flex;
+            flex-direction: column;
+            transition: flex 0.5s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.4s ease, background 0.4s ease;
+        }
+
+        .hcard::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(140% 90% at 0% 0%, rgba(232, 136, 58, 0.16), transparent 55%);
+            pointer-events: none;
+        }
+
+        .hcard:hover {
+            flex: 3;
+            border-color: rgba(232, 136, 58, 0.5);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .hcard-top {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            position: relative;
+        }
+
+        .hcard-icon {
+            position: relative;
+            width: 26px;
+            height: 26px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: none;
+        }
+
+        .hcard-icon svg {
+            width: 23px;
+            height: 23px;
+            stroke: var(--ink-100);
+            fill: none;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .hcard-led {
+            position: absolute;
+            top: -3px;
+            right: -3px;
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: var(--orange);
+            box-shadow: 0 0 8px 2px rgba(232, 136, 58, 0.85), 0 0 2px rgba(255, 255, 255, 0.6);
+            animation: led-pulse 2.4s ease-in-out infinite;
+        }
+
+        @keyframes led-pulse {
+            0%, 100% { opacity: 1; box-shadow: 0 0 8px 2px rgba(232, 136, 58, 0.85), 0 0 2px rgba(255, 255, 255, 0.6); }
+            50% { opacity: 0.6; box-shadow: 0 0 4px 1px rgba(232, 136, 58, 0.5), 0 0 1px rgba(255, 255, 255, 0.4); }
+        }
+
+        .hcard-tag {
+            position: relative;
+            font-size: 0.68rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            color: var(--teal);
+            white-space: nowrap;
+            opacity: 0;
+            transform: translateX(-4px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .hcard:hover .hcard-tag {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .hcard-title {
+            position: relative;
+            font-family: 'Playfair Display', Georgia, serif;
+            font-style: italic;
+            font-weight: 600;
+            font-size: 1.36rem;
+            line-height: 1.28;
+            color: var(--ink-100);
+            margin-top: 22px;
+        }
+
+        .hcard-desc {
+            position: relative;
+            font-size: 0.86rem;
+            line-height: 1.6;
+            color: var(--ink-300);
+            margin-top: 14px;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.45s ease, opacity 0.3s ease;
+        }
+
+        .hcard:hover .hcard-desc {
+            max-height: 90px;
+            opacity: 1;
+        }
+
+        .hcard-features {
+            position: relative;
+            list-style: none;
+            margin-top: 12px;
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.45s ease 0.05s, opacity 0.3s ease 0.05s;
+        }
+
+        .hcard:hover .hcard-features {
+            max-height: 170px;
+            opacity: 1;
+        }
+
+        .hcard-features li {
+            font-size: 0.8rem;
+            color: var(--ink-300);
+            margin-bottom: 6px;
+            padding-left: 18px;
+            position: relative;
+        }
+
+        .hcard-features li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: var(--orange);
+        }
+
+        .hcard-footer {
+            position: relative;
+            margin-top: auto;
+            padding-top: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            border-top: 1px solid rgba(255, 255, 255, 0.12);
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.3s ease 0.1s, max-height 0.45s ease 0.1s;
+        }
+
+        .hcard:hover .hcard-footer {
+            opacity: 1;
+            max-height: 60px;
+        }
+
+        .hcard-footer span {
+            font-size: 0.68rem;
+            color: var(--teal);
+            background: rgba(95, 212, 222, 0.12);
+            border: 1px solid rgba(95, 212, 222, 0.3);
+            padding: 3px 9px;
+            border-radius: 4px;
+        }
+
+        .hcard-tags-closed span {
+            position: relative;
+            display: block;
+            font-size: 0.82rem;
+            color: var(--ink-300);
+            padding-left: 17px;
+        }
+
+        .hcard-tags-closed span::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: var(--teal);
+            box-shadow: 0 0 6px 1px rgba(95, 212, 222, 0.7);
+        }
+
+        /* Desktop-only: bigger cards now have room to breathe, so the
+           collapsed/expanded card text gets scaled up to match instead of
+           staying at the old cramped mobile-era sizes. */
+        @media (min-width: 861px) {
+            .cards-row:has(.hcard:hover) {
+                height: min(520px, 60vh);
+            }
+
+            .hcard-tag {
+                font-size: 0.78rem;
+            }
+
+            .hcard-title {
+                font-size: 1.66rem;
+                line-height: 1.3;
+                margin-top: 26px;
+            }
+
+            .hcard-tags-closed {
+                margin-top: 20px;
+                gap: 11px;
+            }
+
+            .hcard-tags-closed span {
+                font-size: 0.94rem;
+                padding-left: 20px;
+            }
+
+            .hcard-tags-closed span::before {
+                width: 6px;
+                height: 6px;
+            }
+
+            .hcard-desc {
+                font-size: 1rem;
+                line-height: 1.7;
+                margin-top: 18px;
+            }
+
+            .hcard:hover .hcard-desc {
+                max-height: 150px;
+            }
+
+            .hcard-features {
+                margin-top: 18px;
+            }
+
+            .hcard:hover .hcard-features {
+                max-height: 230px;
+            }
+
+            .hcard-features li {
+                font-size: 0.96rem;
+                line-height: 1.55;
+                margin-bottom: 11px;
+                padding-left: 24px;
+            }
+
+            .hcard-footer {
+                padding-top: 18px;
+                gap: 10px;
+            }
+
+            .hcard-footer span {
+                font-size: 0.78rem;
+                padding: 5px 12px;
+            }
+        }
+
+        .hcard-tags-closed {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 9px;
+            margin-top: 16px;
+            max-height: 200px;
+            overflow: hidden;
+            transition: opacity 0.25s ease, max-height 0.4s ease, margin 0.4s ease;
+        }
+
+        .hcard:hover .hcard-tags-closed {
+            opacity: 0;
+            max-height: 0;
+            margin-top: 0;
+            pointer-events: none;
+        }
+
+        /* ---------- CARDS CTA (inline, no extra scroll) ---------- */
+
+        .cards-cta {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+            flex-wrap: wrap;
+            margin-top: 26px;
+        }
+
+        .cards-cta span {
+            font-size: 0.82rem;
+            color: var(--ink-500);
+        }
+
+        /* ---------- SITE FOOTER ---------- */
+
+        .cta-button {
+            display: inline-block;
+            background: var(--orange);
+            color: var(--navy-950);
+            padding: 13px 30px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            margin-top: 16px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+
+        .cta-button:hover {
+            background: var(--orange-light);
+            transform: scale(1.05);
+        }
+
+        .cta-button.ghost {
+            background: transparent;
+            color: var(--ink-100);
+            border: 1px solid rgba(245, 243, 238, 0.35);
+        }
+
+        .cta-button.ghost:hover {
+            background: rgba(245, 243, 238, 0.08);
+            transform: scale(1.05);
+        }
+
+        /* ---------- MOBILE FALLBACK (static, no scroll-jacking) ---------- */
+
+        @media (max-width: 860px) {
+            .scroll-hero {
+                height: auto;
+            }
+
+            .hero-stage {
+                position: static;
+                height: auto;
+                overflow: visible;
+            }
+
+            .hero-bg {
+                transform: scale(1) translateX(0) !important;
+            }
+
+            .hero-bg-sharp,
+            .hero-overlay-right {
+                display: none;
+            }
+
+            .hero-overlay-left {
+                background: linear-gradient(180deg, rgba(7, 13, 22, 0.55) 0%, rgba(7, 13, 22, 0.75) 100%);
+            }
+
+            .hero-intro {
+                position: static;
+                padding-top: 60px;
+            }
+
+            .hero-content {
+                text-align: center;
+            }
+
+            .hero-text {
+                max-width: 100%;
+                margin: 0 auto;
+            }
+
+            .eyebrow {
+                justify-content: center;
+                margin-bottom: 14px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.5rem;
+                margin-bottom: 12px;
+            }
+
+            .hero-sub {
+                font-size: 0.86rem;
+                line-height: 1.5;
+                max-width: 320px;
+                margin: 0 auto 20px;
+            }
+
+            .hero-cta {
+                justify-content: center;
+            }
+
+            .hero-badges {
+                display: flex;
+                justify-content: center;
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(18px) saturate(160%);
+                -webkit-backdrop-filter: blur(18px) saturate(160%);
+                border: 1px solid rgba(255, 255, 255, 0.22);
+                box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.2);
+                border-radius: 14px;
+                padding: 16px 6px;
+                gap: 0;
+            }
+
+            .hero-badge {
+                flex: 1;
+                align-items: center;
+                text-align: center;
+                padding: 0 8px;
+                position: relative;
+            }
+
+            .hero-badge + .hero-badge::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 4px;
+                bottom: 4px;
+                width: 1px;
+                background: rgba(255, 255, 255, 0.28);
+            }
+
+            .hero-badge strong {
+                font-size: 0.82rem;
+                color: var(--ink-100);
+            }
+
+            .hero-badge span {
+                font-size: 0.68rem;
+                line-height: 1.3;
+                color: var(--ink-100);
+                opacity: 0.75;
+            }
+
+            .hero-cta {
+                margin-bottom: 30px;
+            }
+
+            .hero-cta-primary {
+                display: none;
+            }
+
+            .hero-image {
+                display: none;
+            }
+
+            .hero-image-mobile {
+                display: block;
+                position: relative;
+                width: min(48vw, 240px);
+                margin: 0 auto;
+                padding-bottom: 34px;
+            }
+
+            .hero-image-mobile img {
+                position: relative;
+                width: 100%;
+                display: block;
+                filter: drop-shadow(0 16px 20px rgba(0,0,0,0.35));
+                -webkit-mask-image: linear-gradient(to bottom, black 0%, black 68%, transparent 88%);
+                mask-image: linear-gradient(to bottom, black 0%, black 68%, transparent 88%);
+            }
+
+            .hero-image-cta {
+                display: block;
+                position: absolute;
+                left: 50%;
+                bottom: 0;
+                transform: translateX(-50%);
+                white-space: nowrap;
+                font-size: 0.78rem;
+                padding: 11px 20px;
+                box-shadow: 0 10px 24px rgba(0, 0, 0, 0.4);
+            }
+
+            .scroll-cue {
+                display: none;
+            }
+
+            .hero-fade-bottom {
+                display: none;
+            }
+
+            .cards-stage {
+                position: static;
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                padding: 50px 24px 10px;
+                justify-content: center;
+                transform: none !important;
+            }
+
+            .cards-stage-inner {
+                width: 100%;
+                max-width: 100%;
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .cards-row {
+                display: block;
+                position: relative;
+                width: 100%;
+                /* height set by JS to match the virtual scroll distance, not content height */
+            }
+
+            .hcard {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                flex: none !important;
+                text-align: left;
+            }
+
+            .scroll-stack-end {
+                width: 100%;
+                height: 1px;
+            }
+
+            .hcard-desc,
+            .hcard-features,
+            .hcard-footer,
+            .hcard-tag {
+                max-height: none !important;
+                opacity: 1 !important;
+                transform: none !important;
+            }
+
+            .hcard-tags-closed {
+                display: none !important;
+            }
+
+            .cards-cta {
+                justify-content: center;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="scroll-hero">
+        <div class="hero-stage">
+            <div class="hero-bg"></div>
+            <div class="hero-bg-sharp"></div>
+            <div class="hero-overlay"></div>
+            <div class="hero-overlay-left"></div>
+            <div class="hero-overlay-right"></div>
+            <div class="hero-fade-bottom"></div>
+
+            <!-- Phase 1: intro text + Stefany -->
+            <div class="hero-intro">
+                <div class="container hero-content">
+                    <div class="hero-text">
+                        <span class="eyebrow">Automation &amp; CRM Engineer</span>
+                        <h1>Stefany.S <em>Portfolio</em></h1>
+                        <p class="hero-sub">I design and build n8n workflows, WhatsApp Cloud API integrations, and Notion CRM systems — the mission control behind businesses that run on autopilot.</p>
+
+                        <div class="hero-image-mobile">
+                            <img src="stefany.png" alt="Stefany">
+                            <a href="https://br.fiverr.com/sellers/ste_santogo" target="_blank" rel="noopener" class="cta-button hero-image-cta">View My Work on Fiverr</a>
+                        </div>
+
+                        <div class="hero-cta">
+                            <a href="https://br.fiverr.com/sellers/ste_santogo" target="_blank" rel="noopener" class="cta-button hero-cta-primary">View My Work on Fiverr</a>
+                            <a href="https://www.behance.net/stefanydesigne" target="_blank" rel="noopener" class="cta-button ghost">See Projects</a>
+                        </div>
+                        <div class="hero-badges">
+                            <div class="hero-badge">
+                                <strong>30+ hrs/week</strong>
+                                <span>Availability</span>
+                            </div>
+                            <div class="hero-badge">
+                                <strong>&lt; 24 hrs</strong>
+                                <span>Response time (GMT-3)</span>
+                            </div>
+                            <div class="hero-badge">
+                                <strong>Async-first</strong>
+                                <span>Briefs &amp; Loom walkthroughs</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <img src="Melhorar-Resolu%C3%A7%C3%A3o-stefany.png?v=2" alt="Stefany">
+                </div>
+
+                <div class="scroll-cue">Explore<span>↓</span></div>
+            </div>
+
+            <!-- Phase 2: work cards, revealed on scroll -->
+            <div class="cards-stage">
+                <div class="cards-stage-inner">
+                    <span class="eyebrow">Mission Systems</span>
+                    <h2>What I <em>Build</em></h2>
+
+                    <div class="cards-row">
+                        <div class="hcard">
+                            <div class="hcard-top">
+                                <span class="hcard-icon">
+                                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+                                    <span class="hcard-led"></span>
+                                </span>
+                                <span class="hcard-tag">n8n</span>
+                            </div>
+                            <h3 class="hcard-title">Workflow Automation</h3>
+                            <div class="hcard-tags-closed">
+                                <span>n8n</span><span>REST APIs</span><span>Data Integration</span>
+                            </div>
+                            <p class="hcard-desc">Multi-step automation workflows connecting APIs, databases, and business tools — systems that replace recurring manual processes and keep operations running continuously.</p>
+                            <ul class="hcard-features">
+                                <li>Content and lead capture pipelines</li>
+                                <li>CRM data synchronization</li>
+                                <li>API orchestration</li>
+                            </ul>
+                            <div class="hcard-footer">
+                                <span>n8n</span><span>REST APIs</span><span>Data Integration</span>
+                            </div>
+                        </div>
+
+                        <div class="hcard">
+                            <div class="hcard-top">
+                                <span class="hcard-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M4 20l1.4-4.2A8 8 0 1 1 9 18.6L4 20z"/><path d="M9 10.5c0 2.5 2 4.5 4.5 4.5"/></svg>
+                                    <span class="hcard-led"></span>
+                                </span>
+                                <span class="hcard-tag">WhatsApp</span>
+                            </div>
+                            <h3 class="hcard-title">Cloud API Integration</h3>
+                            <div class="hcard-tags-closed">
+                                <span>Meta API</span><span>n8n</span><span>CRM Sync</span>
+                            </div>
+                            <p class="hcard-desc">Business messaging automation via Meta's Cloud API — conversational flows, automated notifications, and CRM integration at scale, without losing the personal touch.</p>
+                            <ul class="hcard-features">
+                                <li>API setup and configuration</li>
+                                <li>Automated message templates</li>
+                                <li>Conversational flows and logic</li>
+                            </ul>
+                            <div class="hcard-footer">
+                                <span>Meta API</span><span>n8n</span><span>CRM Sync</span>
+                            </div>
+                        </div>
+
+                        <div class="hcard">
+                            <div class="hcard-top">
+                                <span class="hcard-icon">
+                                    <svg viewBox="0 0 24 24"><rect x="3" y="12" width="4" height="8" rx="1"/><rect x="10" y="7" width="4" height="13" rx="1"/><rect x="17" y="3" width="4" height="17" rx="1"/></svg>
+                                    <span class="hcard-led"></span>
+                                </span>
+                                <span class="hcard-tag">Notion</span>
+                            </div>
+                            <h3 class="hcard-title">CRM &amp; Automation</h3>
+                            <div class="hcard-tags-closed">
+                                <span>Notion</span><span>Database Design</span><span>Automation</span>
+                            </div>
+                            <p class="hcard-desc">Complete CRM systems built in Notion — databases, pipeline views, automated task workflows, and reporting dashboards so no lead or follow-up slips through.</p>
+                            <ul class="hcard-features">
+                                <li>Contact and lead databases</li>
+                                <li>Sales pipeline visualization</li>
+                                <li>Reporting dashboards</li>
+                            </ul>
+                            <div class="hcard-footer">
+                                <span>Notion</span><span>Database Design</span><span>Automation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="scroll-stack-end"></div>
+
+                    <div class="cards-cta">
+                        <span>Available 30+ hrs/week • Async-first • Response &lt; 24hrs (GMT-3)</span>
+                        <a href="https://br.fiverr.com/sellers/ste_santogo" target="_blank" rel="noopener" class="cta-button">View My Work on Fiverr</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Desktop: no real page scroll at all. The mouse wheel drives a
+        // virtual progress value (0-1) that fades text -> reveals cards.
+        // The page itself is exactly one viewport tall (overflow: hidden).
+        (function () {
+            var mq = window.matchMedia('(min-width: 861px)');
+            if (!mq.matches) return;
+
+            var heroBg = document.querySelector('.hero-bg');
+            var heroBgSharp = document.querySelector('.hero-bg-sharp');
+            var overlayLeft = document.querySelector('.hero-overlay-left');
+            var overlayRight = document.querySelector('.hero-overlay-right');
+            var intro = document.querySelector('.hero-intro');
+            var cardsStage = document.querySelector('.cards-stage');
+
+            function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+            function smoothstep(e0, e1, x) {
+                var t = clamp((x - e0) / (e1 - e0), 0, 1);
+                return t * t * (3 - 2 * t);
+            }
+
+            var progress = 0;
+            var WHEEL_SENSITIVITY = 900;
+
+            function render() {
+                var p = progress;
+
+                var introOpacity = 1 - smoothstep(0.10, 0.32, p);
+                intro.style.opacity = introOpacity;
+                intro.style.transform = 'translateY(' + ((1 - introOpacity) * -30) + 'px)';
+                intro.style.pointerEvents = introOpacity < 0.05 ? 'none' : 'auto';
+
+                var revealAmt = smoothstep(0.26, 0.46, p);
+                heroBgSharp.style.opacity = revealAmt;
+                overlayRight.style.opacity = revealAmt;
+                overlayLeft.style.opacity = 1 - revealAmt;
+
+                var shiftAmt = smoothstep(0.22, 0.5, p);
+                heroBg.style.transform = 'scale(1.1) translateX(' + (-shiftAmt * 3) + 'vw)';
+                heroBgSharp.style.transform = 'scale(1.12) translateX(' + (-shiftAmt * 7) + 'vw)';
+
+                var cardsOpacity = smoothstep(0.45, 0.85, p);
+                cardsStage.style.opacity = cardsOpacity;
+                cardsStage.style.transform = 'translateY(' + ((1 - cardsOpacity) * 40) + 'px)';
+                cardsStage.style.pointerEvents = cardsOpacity > 0.6 ? 'auto' : 'none';
+            }
+
+            function onWheel(e) {
+                e.preventDefault();
+                progress = clamp(progress + e.deltaY / WHEEL_SENSITIVITY, 0, 1);
+                render();
+            }
+
+            window.addEventListener('wheel', onWheel, { passive: false });
+            render();
+        })();
+    </script>
+
+    <script>
+        // ScrollStack effect (ported from React Bits ScrollStack, vanilla JS, window-scroll mode)
+        (function () {
+            var mq = window.matchMedia('(max-width: 860px)');
+            if (!mq.matches) return;
+
+            var cards = Array.prototype.slice.call(document.querySelectorAll('.cards-row .hcard'));
+            if (cards.length < 2) return;
+
+            var endElement = document.querySelector('.scroll-stack-end');
+            var rowEl = document.querySelector('.cards-row');
+
+            var VIRTUAL_SPACING = 460;
+            var ITEM_SCALE = 0.045;
+            var ITEM_STACK_DISTANCE = 22;
+            var STACK_POSITION = '14%';
+            var SCALE_END_POSITION = '4%';
+            var BASE_SCALE = 0.86;
+            var BLUR_AMOUNT = 3;
+
+            var lastTransforms = new Map();
+            var isUpdating = false;
+
+            function clamp(v, a, b) { return Math.max(a, Math.min(b, v)); }
+
+            function calcProgress(scrollTop, start, end) {
+                if (scrollTop < start) return 0;
+                if (scrollTop > end) return 1;
+                return (scrollTop - start) / (end - start);
+            }
+
+            function parsePct(value, containerHeight) {
+                if (typeof value === 'string' && value.indexOf('%') !== -1) {
+                    return (parseFloat(value) / 100) * containerHeight;
+                }
+                return parseFloat(value);
+            }
+
+            function elementOffset(el) {
+                return el.getBoundingClientRect().top + window.scrollY;
+            }
+
+            // Cards are absolutely positioned with a virtual top offset per index.
+            // This gives the scroll animation the same "distance per card" pacing
+            // as before, WITHOUT the container reserving each card's full real
+            // height (which is what caused the dead space at the end).
+            cards.forEach(function (card, i) {
+                card.style.top = (i * VIRTUAL_SPACING) + 'px';
+                card.style.willChange = 'transform, filter';
+                card.style.transformOrigin = 'top center';
+                card.style.backfaceVisibility = 'hidden';
+            });
+
+            function sizeRow() {
+                var lastCardHeight = cards[cards.length - 1].offsetHeight;
+                rowEl.style.height = ((cards.length - 1) * VIRTUAL_SPACING + lastCardHeight + 40) + 'px';
+            }
+            sizeRow();
+
+            function update() {
+                isUpdating = false;
+
+                var scrollTop = window.scrollY;
+                var containerHeight = window.innerHeight;
+                var stackPositionPx = parsePct(STACK_POSITION, containerHeight);
+                var scaleEndPositionPx = parsePct(SCALE_END_POSITION, containerHeight);
+
+                // --- READ PHASE: gather every layout measurement up front so
+                // no style write below forces a synchronous reflow mid-loop
+                // (that read/write interleaving is what was causing scroll
+                // to stutter/freeze on mobile). ---
+                var endElementTop = endElement ? elementOffset(endElement) : 0;
+                var cardTops = cards.map(function (card, i) {
+                    return elementOffset(card) - (lastTransforms.get(i) ? lastTransforms.get(i).translateY : 0);
+                });
+
+                var topCardIndex = 0;
+                for (var j = 0; j < cards.length; j++) {
+                    var jStart = cardTops[j] - stackPositionPx - ITEM_STACK_DISTANCE * j;
+                    if (scrollTop >= jStart) topCardIndex = j;
+                }
+
+                // --- COMPUTE + WRITE PHASE ---
+                cards.forEach(function (card, i) {
+                    var cardTop = cardTops[i];
+                    var triggerStart = cardTop - stackPositionPx - ITEM_STACK_DISTANCE * i;
+                    var triggerEnd = cardTop - scaleEndPositionPx;
+                    var pinStart = triggerStart;
+                    var pinEnd = endElementTop - containerHeight * 0.2;
+
+                    var scaleProgress = calcProgress(scrollTop, triggerStart, triggerEnd);
+                    var targetScale = BASE_SCALE + i * ITEM_SCALE;
+                    var scale = 1 - scaleProgress * (1 - targetScale);
+
+                    var blur = 0;
+                    if (BLUR_AMOUNT && i < topCardIndex) {
+                        blur = Math.max(0, (topCardIndex - i) * BLUR_AMOUNT);
+                    }
+
+                    var translateY = 0;
+                    var isLast = i === cards.length - 1;
+                    if (!isLast) {
+                        var isPinned = scrollTop >= pinStart && scrollTop <= pinEnd;
+                        if (isPinned) {
+                            translateY = scrollTop - cardTop + stackPositionPx + ITEM_STACK_DISTANCE * i;
+                        } else if (scrollTop > pinEnd) {
+                            translateY = pinEnd - cardTop + stackPositionPx + ITEM_STACK_DISTANCE * i;
+                        }
+                    }
+
+                    var depth = topCardIndex - i;
+                    var opacity = depth > 0 ? Math.max(0.12, 1 - depth * 0.4) : 1;
+
+                    lastTransforms.set(i, { translateY: translateY, scale: scale, blur: blur });
+
+                    card.style.transform = 'translate3d(0, ' + Math.round(translateY) + 'px, 0) scale(' + scale.toFixed(3) + ')';
+                    card.style.filter = blur > 0 ? 'blur(' + blur.toFixed(1) + 'px)' : '';
+                    card.style.opacity = opacity;
+                });
+            }
+
+            function onScroll() {
+                if (!isUpdating) {
+                    isUpdating = true;
+                    requestAnimationFrame(update);
+                }
+            }
+
+            function onResize() {
+                lastTransforms.clear();
+                cards.forEach(function (card) { card.style.transform = ''; });
+                sizeRow();
+                update();
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', onResize);
+            update();
+        })();
+    </script>
+</body>
+</html>
