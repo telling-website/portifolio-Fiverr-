@@ -841,8 +841,13 @@
                 display: none;
             }
 
+            /* Must sit above the fixed darkening overlays (same as .hero-intro),
+               otherwise the up-to-75%-black gradient paints over the cards and
+               makes this whole section look dimmed out. */
             .cards-stage {
-                position: static;
+                position: relative;
+                z-index: 10;
+                inset: auto;
                 opacity: 1 !important;
                 pointer-events: auto !important;
                 padding: 50px 24px 10px;
