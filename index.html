@@ -687,8 +687,20 @@
                 overflow: visible;
             }
 
+            /* On mobile the stage is unpositioned, so this layer would otherwise
+               stretch to the FULL page height. A blurred layer that tall is very
+               expensive to composite on every scroll frame (the main cause of
+               scroll stutter). Pinning it to the viewport keeps it one screen big. */
             .hero-bg {
+                position: fixed;
+                inset: -20px;
                 transform: scale(1) translateX(0) !important;
+            }
+
+            .hero-overlay,
+            .hero-overlay-left {
+                position: fixed;
+                inset: 0;
             }
 
             .hero-bg-sharp,
@@ -859,6 +871,12 @@
                 width: 100%;
                 flex: none !important;
                 text-align: left;
+                /* backdrop-filter is very costly to recompute while these cards
+                   are transformed on every scroll frame; a lighter blur plus a
+                   slightly more opaque base keeps the glass look affordable. */
+                backdrop-filter: blur(8px) saturate(140%);
+                -webkit-backdrop-filter: blur(8px) saturate(140%);
+                background: rgba(255, 255, 255, 0.075);
             }
 
             .scroll-stack-end {
@@ -1108,7 +1126,7 @@
             var STACK_POSITION = '14%';
             var SCALE_END_POSITION = '4%';
             var BASE_SCALE = 0.86;
-            var BLUR_AMOUNT = 3;
+            var BLUR_AMOUNT = 1.5;
 
             var lastTransforms = new Map();
             var isUpdating = false;
